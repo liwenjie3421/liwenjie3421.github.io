@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./bundle.js"></script>
+
+    <div style="display: flex;">
+        <div>locale</div>
+        <div><input id="locale" value="cn"/></div>
+    </div>
+    <div style="display: flex;">
+        <div>coinInfo-fiat</div>
+        <div><input id="fiat" value="CNY"/></div>
+    </div>
+    <div style="display: flex;">
+        <div>coinInfo-crypto</div>
+        <div><input id="crypto" value="BTC"/></div>
+    </div>
+    <div style="display: flex;">
+        <div>coinInfo-isInUS</div>
+        <div><input type="checkbox" id="isInUS"/></div>
+    </div>
+    <button onclick="submit()">submit</button>
+    <a href="https://www.npmjs.com/package/binance-fiat-widget#parameters" target="_blank">params in readme</a>
+    <div id="widget"></div>
+    <script>
+        function submit() {
+            const t = document.querySelector('#widget')
+            const {Widget, unloadWidget} = window.binanceFiatWidget
+            const $ = (e) => document.querySelector(e)
+            unloadWidget()
+            Widget(t, {
+                locale: $('#locale').value,
+                coinInfo: {
+                    fiat: $('#fiat').value,
+                    crypto: $('#crypto').value,
+                    isInUS: $('#isInUS').checked
+                },
+                urlParmas: {
+                    us_ref: 'T2OKJUG7',
+                    ref: 'T2OKJUG7'
+                }
+            })
+    
+        }
+    </script>
+</body>
+</html>
