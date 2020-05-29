@@ -24,6 +24,10 @@
         <div>coinInfo-isInUS</div>
         <div><input type="checkbox" id="isInUS"/></div>
     </div>
+    <div style="display: flex;">
+        <div>width</div>
+        <div><input id="width" value="200"/></div>
+    </div>
     <button onclick="submit()">submit</button>
     <a href="https://www.npmjs.com/package/binance-fiat-widget#parameters" target="_blank">params in readme</a>
     <div id="widget"></div>
@@ -34,6 +38,7 @@
             const $ = (e) => document.querySelector(e)
             unloadWidget()
             Widget(t, {
+                width: 'width',
                 locale: $('#locale').value,
                 coinInfo: {
                     fiat: $('#fiat').value,
